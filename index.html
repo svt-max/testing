@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefan van Tulder - Product & Innovation Leader</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Font (Poppins & Open Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1a1a1a;
+            color: #f8f9fa;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Main layout */
+        .sidebar {
+            padding: 2rem;
+        }
+
+        .main-content {
+            padding: 2rem;
+            background-color: #111111;
+            border-radius: 1rem;
+        }
+
+        /* Sticky sidebar for desktop */
+        @media (min-width: 992px) {
+            .sidebar {
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                overflow-y: auto;
+                padding-top: 4rem; /* Add padding for visual spacing */
+            }
+            .main-content {
+                min-height: 100vh;
+            }
+        }
+
+        /* Custom link style */
+        .contact-link {
+            color: #f8f9fa;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+            font-size: 0.95rem;
+        }
+        .contact-link:hover {
+            color: #0d6efd; /* Bootstrap Primary */
+            text-decoration: none;
+        }
+        .contact-link i {
+            width: 20px; /* Align icons */
+        }
+
+        /* Custom Accordion (Expandable Containers) */
+        .accordion-item {
+            background-color: #2c2c2c;
+            border: 1px solid #3a3a3a;
+            border-radius: 0.5rem !important; /* Force radius */
+        }
+        
+        .accordion-button {
+            font-family: 'Poppins', sans-serif;
+            background-color: #2c2c2c;
+            color: #f8f9fa;
+            font-weight: 600;
+            border-radius: 0.5rem !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #0d6efd;
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 .25rem rgba(13, 110, 253, 0.25);
+        }
+
+        /* Custom icons for accordion */
+        .accordion-button::after {
+            /* Plus icon */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f8f9fa'%3e%3cpath fill-rule='evenodd' d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
+            transition: transform 0.2s ease-in-out;
+        }
+        .accordion-button:not(.collapsed)::after {
+            /* Minus icon */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3c/svg%3e");
+            transform: rotate(90deg); /* Counter-rotate default rotation */
+        }
+
+        .accordion-body {
+            background-color: #222;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .accordion-body ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        .accordion-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skill badges */
+        .skill-badge {
+            background-color: #3a3a3a;
+            color: #f0f0f0;
+            border: 1px solid #555;
+            font-weight: 500;
+            padding: 0.4em 0.75em;
+        }
+        
+        /* Custom card for education */
+        .edu-card {
+            background-color: #2c2c2c;
+            border: 1px solid #3a3a3a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            
+            <!-- ====== LEFT SIDEBAR ====== -->
+            <div class="col-lg-5 col-xl-4 sidebar">
+                <div class="p-3">
+                    <h1 class="display-5 fw-bold">Stefan van Tulder</h1>
+                    <p class="lead text-primary mb-4">Product & Innovation Leader</p>
+                    
+                    <!-- Contact Info -->
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">
+                            <a href="tel:+31640436540" class="contact-link">
+                                <i class="bi bi-telephone-fill me-2"></i> +31640436540
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="mailto:s.vantulder@gmail.com" class="contact-link">
+                                <i class="bi bi-envelope-fill me-2"></i> s.vantulder@gmail.com
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="https://linkedin.com/in/stefanvantulder" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                <i class="bi bi-linkedin me-2"></i> linkedin.com/in/stefanvantulder
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="https://www.talentdatalabs.com/blog" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                <i class="bi bi-link-45deg me-2"></i> www.talentdatalabs.com/blog
+                            </a>
+                        </li>
+                         <li class="mb-2">
+                            <a href="#" class="contact-link" onclick="return false;" style="cursor: default;">
+                                <i class="bi bi-geo-alt-fill me-2"></i> Amsterdam, The Netherlands
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <hr class="border-secondary my-4">
+
+                    <!-- Professional Summary -->
+                    <h3 class="mb-3">Professional Summary</h3>
+                    <p class="text-body-secondary">Product and Innovation Leader with 15+ years of experience building and scaling bleeding-edge, data-centric solutions across SaaS, Fintech, HR Tech, and Media.</p>
+                    <p class="text-body-secondary">Expert in translating complex data into user-friendly products, generative AI applications, and intelligent decision-support tools. A product-first leader who has sold two tech companies, led another through a Series A, and delivered >40% revenue growth by focusing on measurable, bottom-line results.</p>
+                    
+                    <hr class="border-secondary my-4">
+                    
+                    <!-- Skills -->
+                    <h3 class="mb-3">Core Competencies</h3>
+                    
+                    <h5 class="text-primary mt-4">Product & Strategy</h5>
+                    <p class="mt-2">
+                        <span class="badge skill-badge me-1 mb-2">Product Management</span>
+                        <span class="badge skill-badge me-1 mb-2">Business Strategy</span>
+                        <span class="badge skill-badge me-1 mb-2">Go-to-Market Strategy</span>
+                        <span class="badge skill-badge me-1 mb-2">Online Marketing</span>
+                        <span class="badge skill-badge me-1 mb-2">SEO/SEM</span>
+                    </p>
+
+                    <h5 class="text-primary mt-4">Data & Technology</h5>
+                    <p class="mt-2">
+                        <span class="badge skill-badge me-1 mb-2">Generative AI</span>
+                        <span class="badge skill-badge me-1 mb-2">Algorithms / ML</span>
+                        <span class="badge skill-badge me-1 mb-2">Data Strategy</span>
+                        <span class="badge skill-badge me-1 mb-2">Data Analysis</span>
+                        <span class="badge skill-badge me-1 mb-2">Business Intelligence (BI)</span>
+                        <span class="badge skill-badge me-1 mb-2">SQL / Tableau</span>
+                        <span class="badge skill-badge me-1 mb-2">Dashboards</span>
+                        <span class="badge skill-badge me-1 mb-2">SPSS / Statistics</span>
+                        <span class="badge skill-badge me-1 mb-2">Data Protection</span>
+                    </p>
+
+                    <h5 class="text-primary mt-4">Leadership & Methodology</h5>
+                    <p class="mt-2">
+                        <span class="badge skill-badge me-1 mb-2">Leadership</span>
+                        <span class="badge skill-badge me-1 mb-2">Agile / Scrum</span>
+                        <span class="badge skill-badge me-1 mb-2">ITSM / ITIL</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- ====== RIGHT MAIN CONTENT ====== -->
+            <div class="col-lg-7 col-xl-8 main-content my-3 my-lg-0">
+                <div class="p-3 p-md-4">
+                    <h2 class="display-6 fw-bold mb-4">Professional Experience</h2>
+
+                    <!-- Experience Accordion -->
+                    <div class="accordion" id="experienceAccordion">
+
+                        <!-- Job 1: MaxCredible -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <div class="d-flex w-100">
+                                        <span><strong>Head of Product</strong> | MaxCredible</span>
+                                        <span class="ms-auto text-body-secondary pe-2">2024 – Present</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#experienceAccordion">
+                                <div class="accordion-body">
+                                    <div class="text-muted mb-3 fs-7">The Netherlands | Fintech</div>
+                                    <ul>
+                                        <li>Driving data-driven product innovation in credit management, contributing to 100% YoY client growth and increasing client LTV by over 40%.</li>
+                                        <li>Leveraging AI and comprehensive data analytics to architect and build intelligent decision-support and predictive credit risk management tools.</li>
+                                        <li>Directly managing and empowering S&P 500 clients to reduce their DSO by up to 50% through new product features.</li>
+                                        <li>Implementing agentic automation, generative AI, and machine learning tools to enhance user experience and workflow efficiency.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job 2: Talent Data Labs -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <div class="d-flex w-100">
+                                        <span><strong>CEO / Founder</strong> | Talent Data Labs</span>
+                                        <span class="ms-auto text-body-secondary pe-2">2017 – 2024</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#experienceAccordion">
+                                <div class="accordion-body">
+                                    <div class="text-muted mb-3 fs-7">The Netherlands + Singapore | HR Tech</div>
+                                    <ul>
+                                        <li>Founded and led the company to specialize in Talent (Data) Analytics, building products based on statistical methods, AI, Machine Learning, and RPA.</li>
+                                        <li>Supplied rich data profiles and assessment products for over 20 million users globally.</li>
+                                        <li>Achieved an average integration effect of +30% user retention and -50% CAC for clients.</li>
+                                        <li>Employed and matched thousands of refugees with the EU & the Just Arrive program.</li>
+                                        <li>Successfully sold core Talent Data Labs technology and Intellectual Property to a large American competitor in late 2023.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Job 3: Josieapp -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <div class="d-flex w-100">
+                                        <span><strong>CPO / Founder</strong> | Josieapp (Acq. by Career.io)</span>
+                                        <span class="ms-auto text-body-secondary pe-2">2020 – 2023</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#experienceAccordion">
+                                <div class="accordion-body">
+                                    <div class="text-muted mb-3 fs-7">The Netherlands | Big Data & AI</div>
+                                    <ul>
+                                        <li>Designed and built product features that improved user engagement, retention, and experience to levels 3x higher than the market average.</li>
+                                        <li>Architected recommendation models supported by generative AI tools to help users navigate the future of work and bridge skills gaps.</li>
+                                        <li>Built a career-matching product based on ONET/ESCO frameworks, achieving a user acquisition cost under $1 and a 7% premium conversion rate.</li>
+                                        <li>Led the product and company vision through a "Series A" investment at a 2.5 million USD valuation.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job 4: Entrepreneur First -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <div class="d-flex w-100">
+                                        <span><strong>Entrepreneur in Residence</strong> | Entrepreneur First</span>
+                                        <span class="ms-auto text-body-secondary pe-2">2017 – 2018</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#experienceAccordion">
+                                <div class="accordion-body">
+                                    <div class="text-muted mb-3 fs-7">Singapore | Venture Capital</div>
+                                    <ul>
+                                        <li>Mentored and supported the EFSG3 cohort, guiding high-potential startups through a rigorous pre-seed funding and product-development process.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job 5: Nova Talent -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    <div class="d-flex w-100">
+                                        <span><strong>Head of Product</strong> | Nova Talent (Acq. by TVG)</span>
+                                        <span class="ms-auto text-body-secondary pe-2">2014 – 2017</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#experienceAccordion">
+                                <div class="accordion-body">
+                                    <div class="text-muted mb-3 fs-7">Singapore, Sweden, Brazil</div>
+                                    <ul>
+                                        <li>Spearheaded the R&D department, building a technology partnership ecosystem with partners like IBM Watson, WePow, and AON.</li>
+                                        <li>Implemented a stable matching algorithm that algorithmically reduced labor demand for event management by 95%.</li>
+                                        <li>Designed and led the development of a globally scalable, data-driven member intake program that reduced manual effort by over 75%.</li>
+                                        <li>Architected two core RPA products that decimated people management and research time by 90% while quadrupling data acquisition.</li>
+                                        <li>Created the global business analysis framework, including performance dashboards and BI metric monitoring.</li>
+                                        <li>Built impact-measurement software used by launch teams, achieving a 9.5/10 CSAT.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Job 6: Google -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    <div class="d-flex w-100">
+                                        <span><strong>Business Analyst</strong> | Google</span>
+                                        <span class="ms-auto text-body-secondary pe-2">2013 – 2014</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#experienceAccordion">
+                                <div class="accordion-body">
+                                    <div class="text-muted mb-3 fs-7">Dublin | Tech</div>
+                                    <ul>
+                                        <li>Performed qualitative analysis and built predictive models to improve Google Adwords efficacy and reduce client churn by 40%.</li>
+                                        <li>Researched the economic potential of disengaged advertisers, generating a user categorization model based on predictive lifetime value (LTV).</li>
+                                        <li>Built a smart CRM tool to re-engage high-risk clients, saving up to 40% from churning.</li>
+                                        <li>Created and launched autonomous digital account optimization through user-to-user communities, enabling unlimited support scalability.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job 7: DDB -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSeven">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                    <div class="d-flex w-100">
+                                        <span><strong>Junior Strategist</strong> | DDB</span>
+                                        <span class="ms-auto text-body-secondary pe-2">2010 – 2012</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#experienceAccordion">
+                                <div class="accordion-body">
+                                    <div class="text-muted mb-3 fs-7">Amsterdam | Advertisement & Media</div>
+                                    <ul>
+                                        <li>Conducted market segmentation and consumer behavioral research using statistical data to develop strategic targeting and media planning strategies for international clients (e.g., McDonalds).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End Accordion -->
+
+                    <!-- Education -->
+                    <h2 class="display-6 fw-bold mb-4 mt-5">Education</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card edu-card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">Master in International Business (CEMS Double Degree)</h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">CEMS | ESADE (Spain) | FGV (Brazil) | 2012 – 2013</h6>
+                                    <p class="card-text small">Part of a global program consistently ranked in the Top 5 for Masters in Management.</p>
+                                    <ul class="small text-body-secondary ps-4">
+                                        <li>ESADE: Master International Marketing, Summa Cum Laude</li>
+                                        <li>FGV: Master in International Business, Magna Cum Laude</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card edu-card">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">Bachelor Business Economics</h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">Vrije Universiteit | 2009 – 2012</h6>
+                                    <p class="card-text small">Minor in quantitative research.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <h2 class="display-6 fw-bold mb-4 mt-5">Languages</h2>
+                    <p>
+                        <span class="badge bg-primary fs-6 me-1 mb-2">Dutch: Native</span>
+                        <span class="badge bg-info-subtle text-info-emphasis fs-6 me-1 mb-2">English: Fluent (C2)</span>
+                        <span class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2">Spanish: Advanced (B2)</span>
+                        <span class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2">French: Average (B1)</span>
+                        <span class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2">Italian: Average (B1)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
