@@ -1,3 +1,14 @@
+You are absolutely right\! That's a typo I introduced in the last version. I apologize for that.
+
+I accidentally wrote `class.badge` instead of `class="badge ..."` on two lines (the "SQL / Tableau" badge and the "Italian" language badge). This broke the styling for both of them.
+
+I have corrected these typos in the code below.
+
+### Corrected HTML Code
+
+Here is the complete, corrected file.
+
+```html
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
@@ -111,7 +122,7 @@
         }
         .accordion-button:not(.collapsed)::after {
             /* Minus icon */
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3C/svg%3e");
             transform: rotate(90deg); /* Counter-rotate default rotation */
         }
 
@@ -245,7 +256,7 @@
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="https://www.maxcredible.com/wp-content/uploads/2023/10/MaxCredible_Logo_2023-10.svg" alt="MaxCredible Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                        <img src="images/maxi-logo.png" alt="MaxCredible Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0 fw-bold">Head of Product</h6>
                                             <span class="text-primary-emphasis fw-medium">MaxCredible</span>
@@ -271,7 +282,7 @@
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="https://media.licdn.com/dms/image/C4D0BAQG5P-7J-U9oVA/company-logo_200_200/0/1630653018860/talentdatalabs_logo?e=2147483647&v=beta&t=jJ5Gv2G_J5b0xJ-M9zF8_f2W6r7d7C-L7m6a3y8pE0s" alt="Talent Data Labs Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                        <img src="images/tdllogo.png" alt="Talent Data Labs Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0 fw-bold">CEO / Founder</h6>
                                             <span class="text-primary-emphasis fw-medium">Talent Data Labs</span>
@@ -298,7 +309,7 @@
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="https://career.io/assets/images/career-io-logo-dark-mode.svg" alt="Career.io Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                        <img src="images/josielogo.png" alt="Josieapp Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0 fw-bold">CPO / Founder</h6>
                                             <span class="text-primary-emphasis fw-medium">Josieapp (Acq. by Career.io)</span>
@@ -324,7 +335,7 @@
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="https://assets-global.website-files.com/624c4800b773890f50106852/624c4800b773891c9a1068f3_EF%20Logo.svg" alt="Entrepreneur First Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                        <img src="images/eflogo.png" alt="Entrepreneur First Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0 fw-bold">Entrepreneur in Residence</h6>
                                             <span class="text-primary-emphasis fw-medium">Entrepreneur First</span>
@@ -347,7 +358,7 @@
                             <h2 class="accordion-header" id="headingFive">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                     <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="https://media.licdn.com/dms/image/D4D0BAQGv_3Kk4Y8qMg/company-logo_200_200/0/1691669460599/nova_talent_logo?e=2147483647&v=beta&t=rW8qS4k1rR3W2e6tB3m1_i6x3E6-Q3-J3E1Pz9p9yA" alt="Nova Talent Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                        <img src="images/Novalogo.png" alt="Nova Talent Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0 fw-bold">Head of Product</h6>
                                             <span class="text-primary-emphasis fw-medium">Nova Talent (Acq. by TVG)</span>
@@ -401,7 +412,7 @@
                             <h2 class="accordion-header" id="headingSeven">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                                     <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/DDB_Logo.svg/2560px-DDB_Logo.svg.png" alt="DDB Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                        <img src="images/DDBlogo.png" alt="DDB Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0 fw-bold">Junior Strategist</h6>
                                             <span class="text-primary-emphasis fw-medium">DDB</span>
@@ -426,8 +437,14 @@
                         <div class="col-md-12">
                             <div class="card edu-card mb-3">
                                 <div class="card-body">
-                                    <h5 class="card-title text-primary">Master in International Business (CEMS Double Degree)</h5>
-                                    <h6 class="card-subtitle mb-2 text-body-secondary">CEMS | ESADE (Spain) | FGV (Brazil) | 2012 &ndash; 2013</h6>
+                                    <div class="d-sm-flex w-100 align-items-center mb-3">
+                                        <img src="images/cemslogo.png" alt="CEMS Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                        <div class="flex-grow-1">
+                                            <h5 class="card-title text-primary mb-0">Master in International Business (CEMS Double Degree)</h5>
+                                            <h6 class="card-subtitle mt-1 text-body-secondary">CEMS | ESADE (Spain) | FGV (Brazil) | 2012 &ndash; 2013</h6>
+                                        </div>
+                                    </div>
+                                    <hr class="border-secondary my-2">
                                     <p class="card-text small">Part of a global program consistently ranked in the Top 5 for Masters in Management.</p>
                                     <ul class="small text-body-secondary ps-4">
                                         <li>ESADE: Master International Marketing, Summa Cum Laude</li>
@@ -439,8 +456,14 @@
                         <div class="col-md-12">
                             <div class="card edu-card">
                                 <div class="card-body">
-                                    <h5 class="card-title text-primary">Bachelor Business Economics</h5>
-                                    <h6 class="card-subtitle mb-2 text-body-secondary">Vrije Universiteit | 2009 &ndash; 2012</h6>
+                                    <div class="d-sm-flex w-100 align-items-center mb-3">
+                                        <img src="images/vulogo.png" alt="Vrije Universiteit Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                        <div class="flex-grow-1">
+                                            <h5 class="card-title text-primary mb-0">Bachelor Business Economics</h5>
+                                            <h6 class="card-subtitle mt-1 text-body-secondary">Vrije Universiteit | 2009 &ndash; 2012</h6>
+                                        </div>
+                                    </div>
+                                    <hr class="border-secondary my-2">
                                     <p class="card-text small">Minor in quantitative research.</p>
                                 </div>
                             </div>
