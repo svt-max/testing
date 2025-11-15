@@ -56,7 +56,7 @@
             font-family: 'Open Sans', sans-serif;
             color: var(--custom-text-primary);
             
-            /* === 1. ANIMATED GRADIENT BACKGROUND === */
+            /* === ANIMATED GRADIENT BACKGROUND === */
             background-size: 400% 400%;
             animation: gradientDrift 15s ease infinite;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -173,6 +173,8 @@
             box-shadow: none;
         }
 
+        /* === CSS FIX: Added .text-primary === */
+        .accordion-button:not(.collapsed) .text-primary,
         .accordion-button:not(.collapsed) .text-primary-emphasis {
             color: #fff !important;
         }
@@ -367,14 +369,14 @@
                         <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="images/maxi-logo.png" alt="MaxCredible Logo" class="company-logo me-3 mb-2 mb-sm-0">
-                                        <div class="flex-grow-1">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="images/maxi-logo.png" alt="MaxCredible Logo" class="company-logo me-3 mb-0">
+                                        <div class="flex-grow-1 me-2">
                                             <h6 class="mb-0 fw-bold" data-translate-key="job1_title">Head of Product</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="job1_company">MaxCredible</span>
                                             <div class="text-muted fs-7" data-translate-key="job1_meta">The Netherlands | Fintech</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job1_dates">2024 &ndash; Present</span>
+                                        <span class="text-nowrap text-body-secondary fs-7" data-translate-key="job1_dates">2024 &ndash; Present</span>
                                     </div>
                                 </button>
                             </h2>
@@ -393,14 +395,14 @@
                         <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="images/tdllogo.png" alt="Talent Data Labs Logo" class="company-logo me-3 mb-2 mb-sm-0">
-                                        <div class="flex-grow-1">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="images/tdllogo.png" alt="Talent Data Labs Logo" class="company-logo me-3 mb-0">
+                                        <div class="flex-grow-1 me-2">
                                             <h6 class="mb-0 fw-bold" data-translate-key="job2_title">CEO / Founder</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="job2_company">Talent Data Labs</span>
                                             <div class="text-muted fs-7" data-translate-key="job2_meta">The Netherlands + Singapore | HR Tech</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job2_dates">2017 &ndash; 2024</span>
+                                        <span class="text-nowrap text-body-secondary fs-7" data-translate-key="job2_dates">2017 &ndash; 2024</span>
                                     </div>
                                 </button>
                             </h2>
@@ -420,14 +422,14 @@
                         <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="images/josielogo.png" alt="Josieapp Logo" class="company-logo me-3 mb-2 mb-sm-0">
-                                        <div class="flex-grow-1">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="images/josielogo.png" alt="Josieapp Logo" class="company-logo me-3 mb-0">
+                                        <div class="flex-grow-1 me-2">
                                             <h6 class="mb-0 fw-bold" data-translate-key="job3_title">CPO / Founder</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="job3_company">Josieapp (Acq. by Career.io)</span>
                                             <div class="text-muted fs-7" data-translate-key="job3_meta">The Netherlands | Big Data & AI</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job3_dates">2020 &ndash; 2023</span>
+                                        <span class="text-nowrap text-body-secondary fs-7" data-translate-key="job3_dates">2020 &ndash; 2023</span>
                                     </div>
                                 </button>
                             </h2>
@@ -446,14 +448,14 @@
                         <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="images/eflogo.png" alt="Entrepreneur First Logo" class="company-logo me-3 mb-2 mb-sm-0">
-                                        <div class="flex-grow-1">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="images/eflogo.png" alt="Entrepreneur First Logo" class="company-logo me-3 mb-0">
+                                        <div class="flex-grow-1 me-2">
                                             <h6 class="mb-0 fw-bold" data-translate-key="job4_title">Entrepreneur in Residence</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="job4_company">Entrepreneur First</span>
                                             <div class="text-muted fs-7" data-translate-key="job4_meta">Singapore | Venture Capital</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job4_dates">2017 &ndash; 2018</span>
+                                        <span class="text-nowrap text-body-secondary fs-7" data-translate-key="job4_dates">2017 &ndash; 2018</span>
                                     </div>
                                 </button>
                             </h2>
@@ -469,14 +471,14 @@
                         <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingFive">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="images/Novalogo.png" alt="Nova Talent Logo" class="company-logo me-3 mb-2 mb-sm-0">
-                                        <div class="flex-grow-1">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="images/Novalogo.png" alt="Nova Talent Logo" class="company-logo me-3 mb-0">
+                                        <div class="flex-grow-1 me-2">
                                             <h6 class="mb-0 fw-bold" data-translate-key="job5_title">Head of Product</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="job5_company">Nova Talent (Acq. by TVG)</span>
                                             <div class="text-muted fs-7" data-translate-key="job5_meta">Singapore, Sweden, Brazil</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job5_dates">2014 &ndash; 2017</span>
+                                        <span class="text-nowrap text-body-secondary fs-7" data-translate-key="job5_dates">2014 &ndash; 2017</span>
                                     </div>
                                 </button>
                             </h2>
@@ -497,14 +499,14 @@
                         <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingSix">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="company-logo me-3 mb-2 mb-sm-0">
-                                        <div class="flex-grow-1">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="company-logo me-3 mb-0">
+                                        <div class="flex-grow-1 me-2">
                                             <h6 class="mb-0 fw-bold" data-translate-key="job6_title">Business Analyst</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="job6_company">Google</span>
                                             <div class="text-muted fs-7" data-translate-key="job6_meta">Dublin | Tech</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job6_dates">2013 &ndash; 2014</span>
+                                        <span class="text-nowrap text-body-secondary fs-7" data-translate-key="job6_dates">2013 &ndash; 2014</span>
                                     </div>
                                 </button>
                             </h2>
@@ -523,14 +525,14 @@
                         <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingSeven">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="images/DDBlogo.png" alt="DDB Logo" class="company-logo me-3 mb-2 mb-sm-0">
-                                        <div class="flex-grow-1">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="images/DDBlogo.png" alt="DDB Logo" class="company-logo me-3 mb-0">
+                                        <div class="flex-grow-1 me-2">
                                             <h6 class="mb-0 fw-bold" data-translate-key="job7_title">Junior Strategist</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="job7_company">DDB</span>
                                             <div class="text-muted fs-7" data-translate-key="job7_meta">Amsterdam | Advertisement & Media</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job7_dates">2010 &ndash; 2012</span>
+                                        <span class="text-nowrap text-body-secondary fs-7" data-translate-key="job7_dates">2010 &ndash; 2012</span>
                                     </div>
                                 </button>
                             </h2>
@@ -550,8 +552,8 @@
                         <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="200">
                             <h2 class="accordion-header" id="headingEduOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduOne" aria-expanded="true" aria-controls="collapseEduOne">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="images/cemslogo.png" alt="CEMS Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="images/cemslogo.png" alt="CEMS Logo" class="company-logo me-3 mb-0">
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0 fw-bold text-primary" data-translate-key="edu1_title">Master in International Business (CEMS Double Degree)</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="edu1_school">CEMS | ESADE (Spain) | FGV (Brazil)</span>
@@ -574,8 +576,8 @@
                         <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="200">
                             <h2 class="accordion-header" id="headingEduTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduTwo" aria-expanded="false" aria-controls="collapseEduTwo">
-                                    <div class="d-sm-flex w-100 align-items-center">
-                                        <img src="images/vulogo.png" alt="Vrije Universiteit Logo" class="company-logo me-3 mb-2 mb-sm-0">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <img src="images/vulogo.png" alt="Vrije Universiteit Logo" class="company-logo me-3 mb-0">
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0 fw-bold text-primary" data-translate-key="edu2_title">Bachelor Business Economics</h6>
                                             <span class="text-primary-emphasis fw-medium" data-translate-key="edu2_school">Vrije Universiteit</span>
