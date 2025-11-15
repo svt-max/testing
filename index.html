@@ -13,8 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        /* === 1. THEME VARIABLES === */
+        /* === THEME VARIABLES === */
         /* Define colors for dark mode (default) */
         :root, html[data-bs-theme="dark"] {
             --custom-bg: #1a1a1a;
@@ -47,6 +49,12 @@
             /* SVG icon colors for light mode */
             --icon-fill-color: #212529;
             --icon-fill-color-active: #ffffff; /* Stays white on blue bg */
+        }
+
+        /* Prevent flickers on load for AOS */
+        [data-aos] {
+            opacity: 0;
+            transition-property: transform, opacity;
         }
         
         /* Base styles */
@@ -103,7 +111,7 @@
             width: 20px; /* Align icons */
         }
 
-        /* === 2. THEME TOGGLE BUTTON === */
+        /* === THEME TOGGLE BUTTON === */
         .theme-toggle {
             font-size: 1.25rem;
             cursor: pointer;
@@ -156,7 +164,7 @@
             box-shadow: 0 0 0 .25rem rgba(13, 110, 253, 0.25);
         }
 
-        /* === 3. ANIMATED ACCORDION ICON === */
+        /* === ANIMATED ACCORDION ICON === */
         .accordion-button::after {
             /* Plus icon */
             flex-shrink: 0;
@@ -255,85 +263,91 @@
                         </span>
                     </div>
 
-                    <h1 class="display-5 fw-bold" data-translate-key="name">Stefan van Tulder</h1>
-                    <p class="lead text-primary mb-4" data-translate-key="job_title">Product & Innovation Leader</p>
-                    
-                    <ul class="list-unstyled mb-4">
-                        <li class="mb-2">
-                            <a href="tel:+31640436540" class="contact-link">
-                                <i class="bi bi-telephone-fill me-2"></i> +31640436540
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="mailto:s.vantulder@gmail.com" class="contact-link">
-                                <i class="bi bi-envelope-fill me-2"></i> s.vantulder@gmail.com
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="https://linkedin.com/in/stefanvantulder" target="_blank" rel="noopener noreferrer" class="contact-link">
-                                <i class="bi bi-linkedin me-2"></i> linkedin.com/in/stefanvantulder
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="https://www.talentdatalabs.com/blog" target="_blank" rel="noopener noreferrer" class="contact-link">
-                                <i class="bi bi-link-45deg me-2"></i> www.talentdatalabs.com/blog
-                            </a>
-                        </li>
-                         <li class="mb-2">
-                            <a href="#" class="contact-link" onclick="return false;" style="cursor: default;">
-                                <i class="bi bi-geo-alt-fill me-2"></i> <span data-translate-key="location">Amsterdam, The Netherlands</span>
-                            </a>
-                        </li>
-                    </ul>
-                    
-                    <hr class="border-secondary my-4">
-
-                    <h3 class="mb-3" data-translate-key="summary_title">Professional Summary</h3>
-                    <p class="text-body-secondary" data-translate-key="summary_p1">Product and Innovation Leader with 15+ years of experience building and scaling bleeding-edge, data-centric solutions across SaaS, Fintech, HR Tech, and Media.</p>
-                    <p class="text-body-secondary" data-translate-key="summary_p2">Expert in translating complex data into user-friendly products, generative AI applications, and intelligent decision-support tools. A product-first leader who has sold two tech companies, led another through a Series A, and delivered >40% revenue growth by focusing on measurable, bottom-line results.</p>
+                    <div data-aos="fade-up">
+                        <h1 class="display-5 fw-bold" data-translate-key="name">Stefan van Tulder</h1>
+                        <p class="lead text-primary mb-4" data-translate-key="job_title">Product & Innovation Leader</p>
+                        
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <a href="tel:+31640436540" class="contact-link">
+                                    <i class="bi bi-telephone-fill me-2"></i> +31640436540
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="mailto:s.vantulder@gmail.com" class="contact-link">
+                                    <i class="bi bi-envelope-fill me-2"></i> s.vantulder@gmail.com
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="https://linkedin.com/in/stefanvantulder" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                    <i class="bi bi-linkedin me-2"></i> linkedin.com/in/stefanvantulder
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="https://www.talentdatalabs.com/blog" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                    <i class="bi bi-link-45deg me-2"></i> www.talentdatalabs.com/blog
+                                </a>
+                            </li>
+                             <li class="mb-2">
+                                <a href="#" class="contact-link" onclick="return false;" style="cursor: default;">
+                                    <i class="bi bi-geo-alt-fill me-2"></i> <span data-translate-key="location">Amsterdam, The Netherlands</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     
                     <hr class="border-secondary my-4">
-                    
-                    <h3 class="mb-3" data-translate-key="skills_title">Core Competencies</h3>
-                    
-                    <h5 class="text-primary mt-4" data-translate-key="skills_sub1">Product & Strategy</h5>
-                    <p class="mt-2">
-                        <span class="badge skill-badge me-1 mb-2">Product Management</span>
-                        <span class="badge skill-badge me-1 mb-2">Business Strategy</span>
-                        <span class="badge skill-badge me-1 mb-2">Go-to-Market Strategy</span>
-                        <span class="badge skill-badge me-1 mb-2">Online Marketing</span>
-                        <span class="badge skill-badge me-1 mb-2">SEO/SEM</span>
-                    </p>
 
-                    <h5 class="text-primary mt-4" data-translate-key="skills_sub2">Data & Technology</h5>
-                    <p class="mt-2">
-                        <span class="badge skill-badge me-1 mb-2">Generative AI</span>
-                        <span class="badge skill-badge me-1 mb-2">Algorithms / ML</span>
-                        <span class="badge skill-badge me-1 mb-2">Data Strategy</span>
-                        <span class="badge skill-badge me-1 mb-2">Data Analysis</span>
-                        <span class="badge skill-badge me-1 mb-2">Business Intelligence (BI)</span>
-                        <span class="badge skill-badge me-1 mb-2">SQL / Tableau</span>
-                        <span class="badge skill-badge me-1 mb-2">Dashboards</span>
-                        <span class="badge skill-badge me-1 mb-2">SPSS / Statistics</span>
-                        <span class="badge skill-badge me-1 mb-2">Data Protection</span>
-                    </p>
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="mb-3" data-translate-key="summary_title">Professional Summary</h3>
+                        <p class="text-body-secondary" data-translate-key="summary_p1">Product and Innovation Leader with 15+ years of experience building and scaling bleeding-edge, data-centric solutions across SaaS, Fintech, HR Tech, and Media.</p>
+                        <p class="text-body-secondary" data-translate-key="summary_p2">Expert in translating complex data into user-friendly products, generative AI applications, and intelligent decision-support tools. A product-first leader who has sold two tech companies, led another through a Series A, and delivered >40% revenue growth by focusing on measurable, bottom-line results.</p>
+                    </div>
+                    
+                    <hr class="border-secondary my-4">
+                    
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="mb-3" data-translate-key="skills_title">Core Competencies</h3>
+                        
+                        <h5 class="text-primary mt-4" data-translate-key="skills_sub1">Product & Strategy</h5>
+                        <p class="mt-2">
+                            <span class="badge skill-badge me-1 mb-2">Product Management</span>
+                            <span class="badge skill-badge me-1 mb-2">Business Strategy</span>
+                            <span class="badge skill-badge me-1 mb-2">Go-to-Market Strategy</span>
+                            <span class="badge skill-badge me-1 mb-2">Online Marketing</span>
+                            <span class="badge skill-badge me-1 mb-2">SEO/SEM</span>
+                        </p>
 
-                    <h5 class="text-primary mt-4" data-translate-key="skills_sub3">Leadership & Methodology</h5>
-                    <p class="mt-2">
-                        <span class="badge skill-badge me-1 mb-2">Leadership</span>
-                        <span class="badge skill-badge me-1 mb-2">Agile / Scrum</span>
-                        <span class="badge skill-badge me-1 mb-2">ITSM / ITIL</span>
-                    </p>
+                        <h5 class="text-primary mt-4" data-translate-key="skills_sub2">Data & Technology</h5>
+                        <p class="mt-2">
+                            <span class="badge skill-badge me-1 mb-2">Generative AI</span>
+                            <span class="badge skill-badge me-1 mb-2">Algorithms / ML</span>
+                            <span class="badge skill-badge me-1 mb-2">Data Strategy</span>
+                            <span class="badge skill-badge me-1 mb-2">Data Analysis</span>
+                            <span class="badge skill-badge me-1 mb-2">Business Intelligence (BI)</span>
+                            <span class="badge skill-badge me-1 mb-2">SQL / Tableau</span>
+                            <span class="badge skill-badge me-1 mb-2">Dashboards</span>
+                            <span class="badge skill-badge me-1 mb-2">SPSS / Statistics</span>
+                            <span class="badge skill-badge me-1 mb-2">Data Protection</span>
+                        </p>
+
+                        <h5 class="text-primary mt-4" data-translate-key="skills_sub3">Leadership & Methodology</h5>
+                        <p class="mt-2">
+                            <span class="badge skill-badge me-1 mb-2">Leadership</span>
+                            <span class="badge skill-badge me-1 mb-2">Agile / Scrum</span>
+                            <span class="badge skill-badge me-1 mb-2">ITSM / ITIL</span>
+                        </p>
+                    </div>
                 </div>
             </div>
             
             <div class="col-lg-7 col-xl-8 main-content my-3 my-lg-0">
                 <div class="p-3 p-md-4">
-                    <h2 class="display-6 fw-bold mb-4" data-translate-key="experience_title">Professional Experience</h2>
+                    <h2 class="display-6 fw-bold mb-4" data-translate-key="experience_title" data-aos="fade-up">Professional Experience</h2>
 
                     <div class="accordion" id="experienceAccordion">
 
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -359,7 +373,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -386,7 +400,7 @@
                             </div>
                         </div>
                         
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -412,7 +426,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -435,7 +449,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingFive">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -463,7 +477,7 @@
                             </div>
                         </div>
                         
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingSix">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -489,7 +503,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingSeven">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -513,10 +527,10 @@
                         </div>
 
                     </div>
-                    <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="education_title">Education</h2>
+                    <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="education_title" data-aos="fade-up">Education</h2>
                     <div class="accordion" id="educationAccordion">
 
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingEduOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduOne" aria-expanded="false" aria-controls="collapseEduOne">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -540,7 +554,7 @@
                             </div>
                         </div>
                         
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
                             <h2 class="accordion-header" id="headingEduTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduTwo" aria-expanded="false" aria-controls="collapseEduTwo">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -561,25 +575,36 @@
                         </div>
 
                     </div>
-                    <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="lang_title">Languages</h2>
-                    <p id="language-switcher">
-                        <a href="#" class="badge bg-primary fs-6 me-1 mb-2 lang-badge" data-lang="nl">🇳🇱 <span data-translate-key="lang_nl">Dutch: Native</span></a>
-                        <a href="#" class="badge bg-info-subtle text-info-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="en">🇬🇧 <span data-translate-key="lang_en">English: Fluent (C2)</span></a>
-                        <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="es">🇪🇸 <span data-translate-key="lang_es">Spanish: Advanced (B2)</span></a>
-                        <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="fr">🇫🇷 <span data-translate-key="lang_fr">French: Average (B1)</span></a>
-                        <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="it">🇮🇹 <span data-translate-key="lang_it">Italian: Average (B1)</span></a>
-                    </p>
+                    <div data-aos="fade-up" data-aos-delay="50">
+                        <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="lang_title">Languages</h2>
+                        <p id="language-switcher">
+                            <a href="#" class="badge bg-primary fs-6 me-1 mb-2 lang-badge" data-lang="nl">🇳🇱 <span data-translate-key="lang_nl">Dutch: Native</span></a>
+                            <a href="#" class="badge bg-info-subtle text-info-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="en">🇬🇧 <span data-translate-key="lang_en">English: Fluent (C2)</span></a>
+                            <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="es">🇪🇸 <span data-translate-key="lang_es">Spanish: Advanced (B2)</span></a>
+                            <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="fr">🇫🇷 <span data-translate-key="lang_fr">French: Average (B1)</span></a>
+                            <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="it">🇮🇹 <span data-translate-key="lang_it">Italian: Average (B1)</span></a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script src="translations.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 4. INITIALIZE AOS ---
+            AOS.init({
+                duration: 600, // Animation duration in ms
+                once: true,     // Whether animation should happen only once
+                easing: 'ease-out-quad' // Animation easing
+            });
 
             // --- THEME TOGGLER ---
             const themeToggle = document.getElementById('theme-toggle');
