@@ -14,11 +14,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* === 1. THEME VARIABLES === */
+        /* Define colors for dark mode (default) */
+        :root, html[data-bs-theme="dark"] {
+            --custom-bg: #1a1a1a;
+            --custom-main-content-bg: #111111;
+            --custom-card-bg: #2c2c2c;
+            --custom-card-border: #3a3a3a;
+            --custom-text-primary: #f8f9fa;
+            --custom-text-secondary: #adb5bd; /* Bootstrap's text-body-secondary */
+            --custom-skill-bg: #3a3a3a;
+            --custom-skill-border: #555;
+            --custom-accordion-body-bg: #222;
+
+            /* SVG icon colors for dark mode */
+            --icon-fill-color: #f8f9fa;
+            --icon-fill-color-active: #ffffff;
+        }
+
+        /* Define colors for light mode */
+        html[data-bs-theme="light"] {
+            --custom-bg: #f8f9fa;
+            --custom-main-content-bg: #ffffff;
+            --custom-card-bg: #ffffff;
+            --custom-card-border: #dee2e6;
+            --custom-text-primary: #212529;
+            --custom-text-secondary: #6c757d;
+            --custom-skill-bg: #e9ecef;
+            --custom-skill-border: #dee2e6;
+            --custom-accordion-body-bg: #f8f9fa;
+
+            /* SVG icon colors for light mode */
+            --icon-fill-color: #212529;
+            --icon-fill-color-active: #ffffff; /* Stays white on blue bg */
+        }
+        
         /* Base styles */
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #1a1a1a;
-            color: #f8f9fa;
+            background-color: var(--custom-bg);
+            color: var(--custom-text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -33,8 +69,9 @@
 
         .main-content {
             padding: 2rem;
-            background-color: #111111;
+            background-color: var(--custom-main-content-bg);
             border-radius: 1rem;
+            transition: background-color 0.3s ease;
         }
 
         /* Sticky sidebar for desktop */
@@ -53,7 +90,7 @@
 
         /* Custom link style */
         .contact-link {
-            color: #f8f9fa;
+            color: var(--custom-text-primary);
             text-decoration: none;
             transition: color 0.2s ease-in-out;
             font-size: 0.95rem;
@@ -66,20 +103,38 @@
             width: 20px; /* Align icons */
         }
 
+        /* === 2. THEME TOGGLE BUTTON === */
+        .theme-toggle {
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: var(--custom-text-secondary);
+            transition: color 0.2s ease;
+        }
+        .theme-toggle:hover {
+            color: #0d6efd;
+        }
+        /* Hide one icon at a time */
+        .theme-toggle .bi-sun-fill { display: none; }
+        html[data-bs-theme="light"] .theme-toggle .bi-sun-fill { display: inline-block; }
+        html[data-bs-theme="light"] .theme-toggle .bi-moon-stars-fill { display: none; }
+
+
         /* Custom Accordion (Expandable Containers) */
         .accordion-item {
-            background-color: #2c2c2c;
-            border: 1px solid #3a3a3a;
+            background-color: var(--custom-card-bg);
+            border: 1px solid var(--custom-card-border);
             border-radius: 0.5rem !important; /* Force radius */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         
         .accordion-button {
             font-family: 'Poppins', sans-serif;
-            background-color: #2c2c2c;
-            color: #f8f9fa;
+            background-color: var(--custom-card-bg);
+            color: var(--custom-text-primary);
             font-weight: 600;
             border-radius: 0.5rem !important;
             text-align: left; /* Ensure text aligns left in new layout */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .accordion-button:not(.collapsed) {
@@ -97,28 +152,34 @@
             color: #e0e0e0 !important;
         }
 
-
         .accordion-button:focus {
             box-shadow: 0 0 0 .25rem rgba(13, 110, 253, 0.25);
         }
 
-        /* Custom icons for accordion */
+        /* === 3. ANIMATED ACCORDION ICON === */
         .accordion-button::after {
             /* Plus icon */
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f8f9fa'%3e%3cpath fill-rule='evenodd' d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-left: auto;
+            content: "";
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--icon-fill-color)'%3e%3cpath fill-rule='evenodd' d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-size: 1.25rem;
             transition: transform 0.2s ease-in-out;
-            flex-shrink: 0; /* Prevent icon from shrinking */
         }
         .accordion-button:not(.collapsed)::after {
-            /* Minus icon */
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3e%3c/svg%3e");
-            transform: rotate(90deg); /* Counter-rotate default rotation */
+            /* Same icon, just new fill color and rotated */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--icon-fill-color-active)'%3e%3cpath fill-rule='evenodd' d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
+            transform: rotate(45deg); /* Rotates + into an X */
         }
 
         .accordion-body {
-            background-color: #222;
+            background-color: var(--custom-accordion-body-bg);
             border-bottom-left-radius: 0.5rem;
             border-bottom-right-radius: 0.5rem;
+            transition: background-color 0.3s ease;
         }
         .accordion-body ul {
             padding-left: 1.2rem;
@@ -130,30 +191,53 @@
 
         /* Skill badges */
         .skill-badge {
-            background-color: #3a3a3a;
-            color: #f0f0f0;
-            border: 1px solid #555;
+            background-color: var(--custom-skill-bg);
+            color: var(--custom-text-primary);
+            border: 1px solid var(--custom-card-border);
             font-weight: 500;
             padding: 0.4em 0.75em;
+            transition: all 0.2s ease;
+        }
+        .skill-badge:hover {
+            transform: scale(1.05);
+            background-color: var(--custom-card-bg);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         /* Custom card for education */
         .edu-card {
-            background-color: #2c2c2c;
-            border: 1px solid #3a3a3a;
+            background-color: var(--custom-card-bg);
+            border: 1px solid var(--custom-card-border);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* === NEW STYLES === */
+        /* Company/School Logos */
         .company-logo {
             width: 48px;
             height: 48px;
             border-radius: 0.35rem;
-            background-color: #f8f9fa; /* Light bg for transparent logos */
+            /* Use a light background color that works in both modes for logos */
+            background-color: #f8f9fa; 
             object-fit: contain;
             padding: 4px;
-            border: 1px solid #444;
+            border: 1px solid var(--custom-card-border);
             flex-shrink: 0; /* Prevent logo from shrinking */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        .company-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Language Badges */
+        .lang-badge {
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .lang-badge:hover {
+            opacity: 0.85;
+        }
+
     </style>
 </head>
 <body>
@@ -163,8 +247,16 @@
             
             <div class="col-lg-5 col-xl-4 sidebar">
                 <div class="p-3">
-                    <h1 class="display-5 fw-bold">Stefan van Tulder</h1>
-                    <p class="lead text-primary mb-4">Product & Innovation Leader</p>
+                    
+                    <div class="d-flex justify-content-end mb-3">
+                        <span id="theme-toggle" class="theme-toggle">
+                            <i class="bi bi-moon-stars-fill"></i>
+                            <i class="bi bi-sun-fill"></i>
+                        </span>
+                    </div>
+
+                    <h1 class="display-5 fw-bold" data-translate-key="name">Stefan van Tulder</h1>
+                    <p class="lead text-primary mb-4" data-translate-key="job_title">Product & Innovation Leader</p>
                     
                     <ul class="list-unstyled mb-4">
                         <li class="mb-2">
@@ -189,22 +281,22 @@
                         </li>
                          <li class="mb-2">
                             <a href="#" class="contact-link" onclick="return false;" style="cursor: default;">
-                                <i class="bi bi-geo-alt-fill me-2"></i> Amsterdam, The Netherlands
+                                <i class="bi bi-geo-alt-fill me-2"></i> <span data-translate-key="location">Amsterdam, The Netherlands</span>
                             </a>
                         </li>
                     </ul>
                     
                     <hr class="border-secondary my-4">
 
-                    <h3 class="mb-3">Professional Summary</h3>
-                    <p class="text-body-secondary">Product and Innovation Leader with 15+ years of experience building and scaling bleeding-edge, data-centric solutions across SaaS, Fintech, HR Tech, and Media.</p>
-                    <p class="text-body-secondary">Expert in translating complex data into user-friendly products, generative AI applications, and intelligent decision-support tools. A product-first leader who has sold two tech companies, led another through a Series A, and delivered >40% revenue growth by focusing on measurable, bottom-line results.</p>
+                    <h3 class="mb-3" data-translate-key="summary_title">Professional Summary</h3>
+                    <p class="text-body-secondary" data-translate-key="summary_p1">Product and Innovation Leader with 15+ years of experience building and scaling bleeding-edge, data-centric solutions across SaaS, Fintech, HR Tech, and Media.</p>
+                    <p class="text-body-secondary" data-translate-key="summary_p2">Expert in translating complex data into user-friendly products, generative AI applications, and intelligent decision-support tools. A product-first leader who has sold two tech companies, led another through a Series A, and delivered >40% revenue growth by focusing on measurable, bottom-line results.</p>
                     
                     <hr class="border-secondary my-4">
                     
-                    <h3 class="mb-3">Core Competencies</h3>
+                    <h3 class="mb-3" data-translate-key="skills_title">Core Competencies</h3>
                     
-                    <h5 class="text-primary mt-4">Product & Strategy</h5>
+                    <h5 class="text-primary mt-4" data-translate-key="skills_sub1">Product & Strategy</h5>
                     <p class="mt-2">
                         <span class="badge skill-badge me-1 mb-2">Product Management</span>
                         <span class="badge skill-badge me-1 mb-2">Business Strategy</span>
@@ -213,7 +305,7 @@
                         <span class="badge skill-badge me-1 mb-2">SEO/SEM</span>
                     </p>
 
-                    <h5 class="text-primary mt-4">Data & Technology</h5>
+                    <h5 class="text-primary mt-4" data-translate-key="skills_sub2">Data & Technology</h5>
                     <p class="mt-2">
                         <span class="badge skill-badge me-1 mb-2">Generative AI</span>
                         <span class="badge skill-badge me-1 mb-2">Algorithms / ML</span>
@@ -226,7 +318,7 @@
                         <span class="badge skill-badge me-1 mb-2">Data Protection</span>
                     </p>
 
-                    <h5 class="text-primary mt-4">Leadership & Methodology</h5>
+                    <h5 class="text-primary mt-4" data-translate-key="skills_sub3">Leadership & Methodology</h5>
                     <p class="mt-2">
                         <span class="badge skill-badge me-1 mb-2">Leadership</span>
                         <span class="badge skill-badge me-1 mb-2">Agile / Scrum</span>
@@ -237,7 +329,7 @@
             
             <div class="col-lg-7 col-xl-8 main-content my-3 my-lg-0">
                 <div class="p-3 p-md-4">
-                    <h2 class="display-6 fw-bold mb-4">Professional Experience</h2>
+                    <h2 class="display-6 fw-bold mb-4" data-translate-key="experience_title">Professional Experience</h2>
 
                     <div class="accordion" id="experienceAccordion">
 
@@ -247,21 +339,21 @@
                                     <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/maxi-logo.png" alt="MaxCredible Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h6 class="mb-0 fw-bold">Head of Product</h6>
-                                            <span class="text-primary-emphasis fw-medium">MaxCredible</span>
-                                            <div class="text-muted fs-7">The Netherlands | Fintech</div>
+                                            <h6 class="mb-0 fw-bold" data-translate-key="job1_title">Head of Product</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="job1_company">MaxCredible</span>
+                                            <div class="text-muted fs-7" data-translate-key="job1_meta">The Netherlands | Fintech</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0">2024 &ndash; Present</span>
+                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job1_dates">2024 &ndash; Present</span>
                                     </div>
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#experienceAccordion">
                                 <div class="accordion-body">
                                     <ul>
-                                        <li>Driving data-driven product innovation in credit management, contributing to 100% YoY client growth and increasing client LTV by over 40%.</li>
-                                        <li>Leveraging AI and comprehensive data analytics to architect and build intelligent decision-support and predictive credit risk management tools.</li>
-                                        <li>Directly managing and empowering S&P 500 clients to reduce their DSO by up to 50% through new product features.</li>
-                                        <li>Implementing agentic automation, generative AI, and machine learning tools to enhance user experience and workflow efficiency.</li>
+                                        <li data-translate-key="job1_b1">Driving data-driven product innovation in credit management, contributing to 100% YoY client growth and increasing client LTV by over 40%.</li>
+                                        <li data-translate-key="job1_b2">Leveraging AI and comprehensive data analytics to architect and build intelligent decision-support and predictive credit risk management tools.</li>
+                                        <li data-translate-key="job1_b3">Directly managing and empowering S&P 500 clients to reduce their DSO by up to 50% through new product features.</li>
+                                        <li data-translate-key="job1_b4">Implementing agentic automation, generative AI, and machine learning tools to enhance user experience and workflow efficiency.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -273,22 +365,22 @@
                                     <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/tdllogo.png" alt="Talent Data Labs Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h6 class="mb-0 fw-bold">CEO / Founder</h6>
-                                            <span class="text-primary-emphasis fw-medium">Talent Data Labs</span>
-                                            <div class="text-muted fs-7">The Netherlands + Singapore | HR Tech</div>
+                                            <h6 class="mb-0 fw-bold" data-translate-key="job2_title">CEO / Founder</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="job2_company">Talent Data Labs</span>
+                                            <div class="text-muted fs-7" data-translate-key="job2_meta">The Netherlands + Singapore | HR Tech</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0">2017 &ndash; 2024</span>
+                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job2_dates">2017 &ndash; 2024</span>
                                     </div>
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#experienceAccordion">
                                 <div class="accordion-body">
                                     <ul>
-                                        <li>Founded and led the company to specialize in Talent (Data) Analytics, building products based on statistical methods, AI, Machine Learning, and RPA.</li>
-                                        <li>Supplied rich data profiles and assessment products for over 20 million users globally.</li>
-                                        <li>Achieved an average integration effect of +30% user retention and -50% CAC for clients.</li>
-                                        <li>Employed and matched thousands of refugees with the EU & the Just Arrive program.</li>
-                                        <li>Successfully sold core Talent Data Labs technology and Intellectual Property to a large American competitor in late 2023.</li>
+                                        <li data-translate-key="job2_b1">Founded and led the company to specialize in Talent (Data) Analytics, building products based on statistical methods, AI, Machine Learning, and RPA.</li>
+                                        <li data-translate-key="job2_b2">Supplied rich data profiles and assessment products for over 20 million users globally.</li>
+                                        <li data-translate-key="job2_b3">Achieved an average integration effect of +30% user retention and -50% CAC for clients.</li>
+                                        <li data-translate-key="job2_b4">Employed and matched thousands of refugees with the EU & the Just Arrive program.</li>
+                                        <li data-translate-key="job2_b5">Successfully sold core Talent Data Labs technology and Intellectual Property to a large American competitor in late 2023.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -300,21 +392,21 @@
                                     <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/josielogo.png" alt="Josieapp Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h6 class="mb-0 fw-bold">CPO / Founder</h6>
-                                            <span class="text-primary-emphasis fw-medium">Josieapp (Acq. by Career.io)</span>
-                                            <div class="text-muted fs-7">The Netherlands | Big Data & AI</div>
+                                            <h6 class="mb-0 fw-bold" data-translate-key="job3_title">CPO / Founder</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="job3_company">Josieapp (Acq. by Career.io)</span>
+                                            <div class="text-muted fs-7" data-translate-key="job3_meta">The Netherlands | Big Data & AI</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0">2020 &ndash; 2023</span>
+                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job3_dates">2020 &ndash; 2023</span>
                                     </div>
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#experienceAccordion">
                                 <div class="accordion-body">
                                     <ul>
-                                        <li>Designed and built product features that improved user engagement, retention, and experience to levels 3x higher than the market average.</li>
-                                        <li>Architected recommendation models supported by generative AI tools to help users navigate the future of work and bridge skills gaps.</li>
-                                        <li>Built a career-matching product based on ONET/ESCO frameworks, achieving a user acquisition cost under $1 and a 7% premium conversion rate.</li>
-                                        <li>Led the product and company vision through a "Series A" investment at a 2.5 million USD valuation.</li>
+                                        <li data-translate-key="job3_b1">Designed and built product features that improved user engagement, retention, and experience to levels 3x higher than the market average.</li>
+                                        <li data-translate-key="job3_b2">Architected recommendation models supported by generative AI tools to help users navigate the future of work and bridge skills gaps.</li>
+                                        <li data-translate-key="job3_b3">Built a career-matching product based on ONET/ESCO frameworks, achieving a user acquisition cost under $1 and a 7% premium conversion rate.</li>
+                                        <li data-translate-key="job3_b4">Led the product and company vision through a "Series A" investment at a 2.5 million USD valuation.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -326,18 +418,18 @@
                                     <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/eflogo.png" alt="Entrepreneur First Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h6 class="mb-0 fw-bold">Entrepreneur in Residence</h6>
-                                            <span class="text-primary-emphasis fw-medium">Entrepreneur First</span>
-                                            <div class="text-muted fs-7">Singapore | Venture Capital</div>
+                                            <h6 class="mb-0 fw-bold" data-translate-key="job4_title">Entrepreneur in Residence</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="job4_company">Entrepreneur First</span>
+                                            <div class="text-muted fs-7" data-translate-key="job4_meta">Singapore | Venture Capital</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0">2017 &ndash; 2018</span>
+                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job4_dates">2017 &ndash; 2018</span>
                                     </div>
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#experienceAccordion">
                                 <div class="accordion-body">
                                     <ul>
-                                        <li>Mentored and supported the EFSG3 cohort, guiding high-potential startups through a rigorous pre-seed funding and product-development process.</li>
+                                        <li data-translate-key="job4_b1">Mentored and supported the EFSG3 cohort, guiding high-potential startups through a rigorous pre-seed funding and product-development process.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -349,23 +441,23 @@
                                     <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/Novalogo.png" alt="Nova Talent Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h6 class="mb-0 fw-bold">Head of Product</h6>
-                                            <span class="text-primary-emphasis fw-medium">Nova Talent (Acq. by TVG)</span>
-                                            <div class="text-muted fs-7">Singapore, Sweden, Brazil</div>
+                                            <h6 class="mb-0 fw-bold" data-translate-key="job5_title">Head of Product</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="job5_company">Nova Talent (Acq. by TVG)</span>
+                                            <div class="text-muted fs-7" data-translate-key="job5_meta">Singapore, Sweden, Brazil</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0">2014 &ndash; 2017</span>
+                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job5_dates">2014 &ndash; 2017</span>
                                     </div>
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#experienceAccordion">
                                 <div class="accordion-body">
                                     <ul>
-                                        <li>Spearheaded the R&D department, building a technology partnership ecosystem with partners like IBM Watson, WePow, and AON.</li>
-                                        <li>Implemented a stable matching algorithm that algorithmically reduced labor demand for event management by 95%.</li>
-                                        <li>Designed and led the development of a globally scalable, data-driven member intake program that reduced manual effort by over 75%.</li>
-                                        <li>Architected two core RPA products that decimated people management and research time by 90% while quadrupling data acquisition.</li>
-                                        <li>Created the global business analysis framework, including performance dashboards and BI metric monitoring.</li>
-                                        <li>Built impact-measurement software used by launch teams, achieving a 9.5/10 CSAT.</li>
+                                        <li data-translate-key="job5_b1">Spearheaded the R&D department, building a technology partnership ecosystem with partners like IBM Watson, WePow, and AON.</li>
+                                        <li data-translate-key="job5_b2">Implemented a stable matching algorithm that algorithmically reduced labor demand for event management by 95%.</li>
+                                        <li data-translate-key="job5_b3">Designed and led the development of a globally scalable, data-driven member intake program that reduced manual effort by over 75%.</li>
+                                        <li data-translate-key="job5_b4">Architected two core RPA products that decimated people management and research time by 90% while quadrupling data acquisition.</li>
+                                        <li data-translate-key="job5_b5">Created the global business analysis framework, including performance dashboards and BI metric monitoring.</li>
+                                        <li data-translate-key="job5_b6">Built impact-measurement software used by launch teams, achieving a 9.5/10 CSAT.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -377,21 +469,21 @@
                                     <div class="d-sm-flex w-100 align-items-center">
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h6 class="mb-0 fw-bold">Business Analyst</h6>
-                                            <span class="text-primary-emphasis fw-medium">Google</span>
-                                            <div class="text-muted fs-7">Dublin | Tech</div>
+                                            <h6 class="mb-0 fw-bold" data-translate-key="job6_title">Business Analyst</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="job6_company">Google</span>
+                                            <div class="text-muted fs-7" data-translate-key="job6_meta">Dublin | Tech</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0">2013 &ndash; 2014</span>
+                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job6_dates">2013 &ndash; 2014</span>
                                     </div>
                                 </button>
                             </h2>
                             <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#experienceAccordion">
                                 <div class="accordion-body">
                                     <ul>
-                                        <li>Performed qualitative analysis and built predictive models to improve Google Adwords efficacy and reduce client churn by 40%.</li>
-                                        <li>Researched the economic potential of disengaged advertisers, generating a user categorization model based on predictive lifetime value (LTV).</li>
-                                        <li>Built a smart CRM tool to re-engage high-risk clients, saving up to 40% from churning.</li>
-                                        <li>Created and launched autonomous digital account optimization through user-to-user communities, enabling unlimited support scalability.</li>
+                                        <li data-translate-key="job6_b1">Performed qualitative analysis and built predictive models to improve Google Adwords efficacy and reduce client churn by 40%.</li>
+                                        <li data-translate-key="job6_b2">Researched the economic potential of disengaged advertisers, generating a user categorization model based on predictive lifetime value (LTV).</li>
+                                        <li data-translate-key="job6_b3">Built a smart CRM tool to re-engage high-risk clients, saving up to 40% from churning.</li>
+                                        <li data-translate-key="job6_b4">Created and launched autonomous digital account optimization through user-to-user communities, enabling unlimited support scalability.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -403,75 +495,166 @@
                                     <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/DDBlogo.png" alt="DDB Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h6 class="mb-0 fw-bold">Junior Strategist</h6>
-                                            <span class="text-primary-emphasis fw-medium">DDB</span>
-                                            <div class="text-muted fs-7">Amsterdam | Advertisement & Media</div>
+                                            <h6 class="mb-0 fw-bold" data-translate-key="job7_title">Junior Strategist</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="job7_company">DDB</span>
+                                            <div class="text-muted fs-7" data-translate-key="job7_meta">Amsterdam | Advertisement & Media</div>
                                         </div>
-                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0">2010 &ndash; 2012</span>
+                                        <span class="ms-sm-auto text-nowrap text-body-secondary ps-sm-3 d-block mt-2 mt-sm-0" data-translate-key="job7_dates">2010 &ndash; 2012</span>
                                     </div>
                                 </button>
                             </h2>
                             <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#experienceAccordion">
                                 <div class="accordion-body">
                                     <ul>
-                                        <li>Conducted market segmentation and consumer behavioral research using statistical data to develop strategic targeting and media planning strategies for international clients (e.g., McDonalds).</li>
+                                        <li data-translate-key="job7_b1">Conducted market segmentation and consumer behavioral research using statistical data to develop strategic targeting and media planning strategies for international clients (e.g., McDonalds).</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <h2 class="display-6 fw-bold mb-4 mt-5">Education</h2>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card edu-card mb-3">
-                                <div class="card-body">
-                                    <div class="d-sm-flex w-100 align-items-center mb-3">
+                    <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="education_title">Education</h2>
+                    <div class="accordion" id="educationAccordion">
+
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingEduOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduOne" aria-expanded="false" aria-controls="collapseEduOne">
+                                    <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/cemslogo.png" alt="CEMS Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h5 class="card-title text-primary mb-0">Master in International Business (CEMS Double Degree)</h5>
-                                            <h6 class="card-subtitle mt-1 text-body-secondary">CEMS | ESADE (Spain) | FGV (Brazil) | 2012 &ndash; 2013</h6>
+                                            <h6 class="mb-0 fw-bold text-primary" data-translate-key="edu1_title">Master in International Business (CEMS Double Degree)</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="edu1_school">CEMS | ESADE (Spain) | FGV (Brazil)</span>
+                                            <div class="text-muted fs-7" data-translate-key="edu1_dates">2012 &ndash; 2013</div>
                                         </div>
                                     </div>
-                                    <hr class="border-secondary my-2">
-                                    <p class="card-text small">Part of a global program consistently ranked in the Top 5 for Masters in Management.</p>
+                                </button>
+                            </h2>
+                            <div id="collapseEduOne" class="accordion-collapse collapse" aria-labelledby="headingEduOne" data-bs-parent="#educationAccordion">
+                                <div class="accordion-body">
+                                    <p class="card-text small" data-translate-key="edu1_desc">Part of a global program consistently ranked in the Top 5 for Masters in Management.</p>
                                     <ul class="small text-body-secondary ps-4">
-                                        <li>ESADE: Master International Marketing, Summa Cum Laude</li>
-                                        <li>FGV: Master in International Business, Magna Cum Laude</li>
+                                        <li data-translate-key="edu1_b1">ESADE: Master International Marketing, Summa Cum Laude</li>
+                                        <li data-translate-key="edu1_b2">FGV: Master in International Business, Magna Cum Laude</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="card edu-card">
-                                <div class="card-body">
-                                    <div class="d-sm-flex w-100 align-items-center mb-3">
+                        
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingEduTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduTwo" aria-expanded="false" aria-controls="collapseEduTwo">
+                                    <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/vulogo.png" alt="Vrije Universiteit Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
-                                            <h5 class="card-title text-primary mb-0">Bachelor Business Economics</h5>
-                                            <h6 class="card-subtitle mt-1 text-body-secondary">Vrije Universiteit | 2009 &ndash; 2012</h6>
+                                            <h6 class="mb-0 fw-bold text-primary" data-translate-key="edu2_title">Bachelor Business Economics</h6>
+                                            <span class="text-primary-emphasis fw-medium" data-translate-key="edu2_school">Vrije Universiteit</span>
+                                            <div class="text-muted fs-7" data-translate-key="edu2_dates">2009 &ndash; 2012</div>
                                         </div>
                                     </div>
-                                    <hr class="border-secondary my-2">
-                                    <p class="card-text small">Minor in quantitative research.</p>
+                                </button>
+                            </h2>
+                            <div id="collapseEduTwo" class="accordion-collapse collapse" aria-labelledby="headingEduTwo" data-bs-parent="#educationAccordion">
+                                <div class="accordion-body">
+                                    <p class="card-text small" data-translate-key="edu2_desc">Minor in quantitative research.</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <h2 class="display-6 fw-bold mb-4 mt-5">Languages</h2>
-                    <p>
-                        <span class="badge bg-primary fs-6 me-1 mb-2">🇳🇱 Dutch: Native</span>
-                        <span class="badge bg-info-subtle text-info-emphasis fs-6 me-1 mb-2">🇬🇧 English: Fluent (C2)</span>
-                        <span class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2">🇪🇸 Spanish: Advanced (B2)</span>
-                        <span class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2">🇫🇷 French: Average (B1)</span>
-                        <span class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2">🇮🇹 Italian: Average (B1)</span>
+                    </div>
+                    <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="lang_title">Languages</h2>
+                    <p id="language-switcher">
+                        <a href="#" class="badge bg-primary fs-6 me-1 mb-2 lang-badge" data-lang="nl">🇳🇱 <span data-translate-key="lang_nl">Dutch: Native</span></a>
+                        <a href="#" class="badge bg-info-subtle text-info-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="en">🇬🇧 <span data-translate-key="lang_en">English: Fluent (C2)</span></a>
+                        <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="es">🇪🇸 <span data-translate-key="lang_es">Spanish: Advanced (B2)</span></a>
+                        <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="fr">🇫🇷 <span data-translate-key="lang_fr">French: Average (B1)</span></a>
+                        <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis fs-6 me-1 mb-2 lang-badge" data-lang="it">🇮🇹 <span data-translate-key="lang_it">Italian: Average (B1)</span></a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="translations.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- THEME TOGGLER ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const docElement = document.documentElement;
+            
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            docElement.setAttribute('data-bs-theme', savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = docElement.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                docElement.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+
+
+            // --- TRANSLATION ENGINE ---
+            const languageSwitcher = document.getElementById('language-switcher');
+            const savedLang = localStorage.getItem('lang') || 'en'; // Default to English
+
+            // Translate Function
+            function translatePage(lang) {
+                // Set the 'lang' attribute on the <html> tag
+                docElement.setAttribute('lang', lang);
+
+                // Find all elements with the 'data-translate-key' attribute
+                document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.getAttribute('data-translate-key');
+                    
+                    // Check if the key exists in the loaded translations object
+                    if (translations[key]) {
+                        const translation = translations[key][lang];
+                        
+                        if (translation) {
+                            el.innerHTML = translation; // Use innerHTML to render flags/HTML entities
+                        } else {
+                            // Fallback to English if translation is missing for the selected lang
+                            const fallback = translations[key]['en'];
+                            if(fallback) {
+                                el.innerHTML = fallback;
+                            } else {
+                                console.warn(`No translation or English fallback found for key: ${key}`);
+                            }
+                        }
+                    } else {
+                        console.warn(`No translation object found for key: ${key}`);
+                    }
+                });
+
+                // Special case: Update page title
+                if (translations['title']?.[lang]) {
+                    document.title = translations['title'][lang];
+                } else {
+                    document.title = translations['title']['en'];
+                }
+
+                // Save language preference
+                localStorage.setItem('lang', lang);
+            }
+
+            // Add Click Listeners
+            languageSwitcher.addEventListener('click', (e) => {
+                const langBadge = e.target.closest('.lang-badge');
+                if (langBadge) {
+                    e.preventDefault(); 
+                    const lang = langBadge.getAttribute('data-lang');
+                    translatePage(lang);
+                }
+            });
+
+            // Initial Load
+            // Translate the page on load using the saved language
+            translatePage(savedLang); 
+        });
+    </script>
+
 </body>
 </html>
