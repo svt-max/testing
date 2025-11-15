@@ -17,24 +17,20 @@
 
     <style>
         /* === THEME VARIABLES === */
-        /* Define colors for dark mode (default) */
         :root, html[data-bs-theme="dark"] {
             --custom-bg: #1a1a1a;
             --custom-main-content-bg: #111111;
             --custom-card-bg: #2c2c2c;
             --custom-card-border: #3a3a3a;
             --custom-text-primary: #f8f9fa;
-            --custom-text-secondary: #adb5bd; /* Bootstrap's text-body-secondary */
+            --custom-text-secondary: #adb5bd;
             --custom-skill-bg: #3a3a3a;
             --custom-skill-border: #555;
             --custom-accordion-body-bg: #222;
-
-            /* SVG icon colors for dark mode */
             --icon-fill-color: #f8f9fa;
             --icon-fill-color-active: #ffffff;
         }
 
-        /* Define colors for light mode */
         html[data-bs-theme="light"] {
             --custom-bg: #f8f9fa;
             --custom-main-content-bg: #ffffff;
@@ -45,10 +41,8 @@
             --custom-skill-bg: #e9ecef;
             --custom-skill-border: #dee2e6;
             --custom-accordion-body-bg: #f8f9fa;
-
-            /* SVG icon colors for light mode */
             --icon-fill-color: #212529;
-            --icon-fill-color-active: #ffffff; /* Stays white on blue bg */
+            --icon-fill-color-active: #ffffff;
         }
 
         /* Prevent flickers on load for AOS */
@@ -60,10 +54,29 @@
         /* Base styles */
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: var(--custom-bg);
             color: var(--custom-text-primary);
+            
+            /* === 1. ANIMATED GRADIENT BACKGROUND === */
+            background-size: 400% 400%;
+            animation: gradientDrift 15s ease infinite;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        /* Set the gradients for light/dark mode */
+        html[data-bs-theme="dark"] body {
+            background-image: linear-gradient(-45deg, #111111, #1a1a1a, #1f1f2a, #1a1a1a);
+        }
+        html[data-bs-theme="light"] body {
+            background-image: linear-gradient(-45deg, #f8f9fa, #ffffff, #f0f2f5, #ffffff);
+        }
+
+        /* Gradient animation keyframes */
+        @keyframes gradientDrift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
@@ -73,6 +86,9 @@
         /* Main layout */
         .sidebar {
             padding: 2rem;
+            /* The sidebar background is solid, floating over the animated body */
+            background-color: var(--custom-bg);
+            border-radius: 1rem;
         }
 
         .main-content {
@@ -86,15 +102,22 @@
         @media (min-width: 992px) {
             .sidebar {
                 position: sticky;
-                top: 0;
-                height: 100vh;
+                top: 2rem; /* Give it some space from the top */
+                height: calc(100vh - 4rem); /* Adjust height for top padding */
                 overflow-y: auto;
-                padding-top: 4rem; /* Add padding for visual spacing */
             }
             .main-content {
                 min-height: 100vh;
             }
         }
+        
+        /* Apply sidebar styles on mobile too for consistency */
+        @media (max-width: 991.98px) {
+            .sidebar {
+                margin-bottom: 1.5rem;
+            }
+        }
+
 
         /* Custom link style */
         .contact-link {
@@ -104,7 +127,7 @@
             font-size: 0.95rem;
         }
         .contact-link:hover {
-            color: #0d6efd; /* Bootstrap Primary */
+            color: #0d6efd;
             text-decoration: none;
         }
         .contact-link i {
@@ -121,7 +144,6 @@
         .theme-toggle:hover {
             color: #0d6efd;
         }
-        /* Hide one icon at a time */
         .theme-toggle .bi-sun-fill { display: none; }
         html[data-bs-theme="light"] .theme-toggle .bi-sun-fill { display: inline-block; }
         html[data-bs-theme="light"] .theme-toggle .bi-moon-stars-fill { display: none; }
@@ -131,7 +153,7 @@
         .accordion-item {
             background-color: var(--custom-card-bg);
             border: 1px solid var(--custom-card-border);
-            border-radius: 0.5rem !important; /* Force radius */
+            border-radius: 0.5rem !important;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         
@@ -141,7 +163,7 @@
             color: var(--custom-text-primary);
             font-weight: 600;
             border-radius: 0.5rem !important;
-            text-align: left; /* Ensure text aligns left in new layout */
+            text-align: left;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -151,7 +173,6 @@
             box-shadow: none;
         }
 
-        /* Override text colors for active/blue accordion header */
         .accordion-button:not(.collapsed) .text-primary-emphasis {
             color: #fff !important;
         }
@@ -166,7 +187,6 @@
 
         /* === ANIMATED ACCORDION ICON === */
         .accordion-button::after {
-            /* Plus icon */
             flex-shrink: 0;
             width: 1.25rem;
             height: 1.25rem;
@@ -178,7 +198,6 @@
             transition: transform 0.2s ease-in-out;
         }
         .accordion-button:not(.collapsed)::after {
-            /* Same icon, just new fill color and rotated */
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--icon-fill-color-active)'%3e%3cpath fill-rule='evenodd' d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3e%3c/svg%3e");
             transform: rotate(45deg); /* Rotates + into an X */
         }
@@ -224,12 +243,11 @@
             width: 48px;
             height: 48px;
             border-radius: 0.35rem;
-            /* Use a light background color that works in both modes for logos */
             background-color: #f8f9fa; 
             object-fit: contain;
             padding: 4px;
             border: 1px solid var(--custom-card-border);
-            flex-shrink: 0; /* Prevent logo from shrinking */
+            flex-shrink: 0;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .company-logo:hover {
@@ -253,9 +271,8 @@
     <div class="container-xl my-4">
         <div class="row">
             
-            <div class="col-lg-5 col-xl-4 sidebar">
-                <div class="p-3">
-                    
+            <div class="col-lg-5 col-xl-4">
+                <div class="sidebar">
                     <div class="d-flex justify-content-end mb-3">
                         <span id="theme-toggle" class="theme-toggle">
                             <i class="bi bi-moon-stars-fill"></i>
@@ -263,7 +280,7 @@
                         </span>
                     </div>
 
-                    <div data-aos="fade-up">
+                    <div data-aos="fade-up" data-aos-delay="50">
                         <h1 class="display-5 fw-bold" data-translate-key="name">Stefan van Tulder</h1>
                         <p class="lead text-primary mb-4" data-translate-key="job_title">Product & Innovation Leader</p>
                         
@@ -298,7 +315,7 @@
                     
                     <hr class="border-secondary my-4">
 
-                    <div data-aos="fade-up" data-aos-delay="100">
+                    <div data-aos="fade-up" data-aos-delay="150">
                         <h3 class="mb-3" data-translate-key="summary_title">Professional Summary</h3>
                         <p class="text-body-secondary" data-translate-key="summary_p1">Product and Innovation Leader with 15+ years of experience building and scaling bleeding-edge, data-centric solutions across SaaS, Fintech, HR Tech, and Media.</p>
                         <p class="text-body-secondary" data-translate-key="summary_p2">Expert in translating complex data into user-friendly products, generative AI applications, and intelligent decision-support tools. A product-first leader who has sold two tech companies, led another through a Series A, and delivered >40% revenue growth by focusing on measurable, bottom-line results.</p>
@@ -306,7 +323,7 @@
                     
                     <hr class="border-secondary my-4">
                     
-                    <div data-aos="fade-up" data-aos-delay="200">
+                    <div data-aos="fade-up" data-aos-delay="250">
                         <h3 class="mb-3" data-translate-key="skills_title">Core Competencies</h3>
                         
                         <h5 class="text-primary mt-4" data-translate-key="skills_sub1">Product & Strategy</h5>
@@ -341,13 +358,13 @@
                 </div>
             </div>
             
-            <div class="col-lg-7 col-xl-8 main-content my-3 my-lg-0">
-                <div class="p-3 p-md-4">
-                    <h2 class="display-6 fw-bold mb-4" data-translate-key="experience_title" data-aos="fade-up">Professional Experience</h2>
+            <div class="col-lg-7 col-xl-8">
+                <div class="main-content">
+                    <h2 class="display-6 fw-bold mb-4" data-translate-key="experience_title" data-aos="fade-up" data-aos-delay="50">Professional Experience</h2>
 
                     <div class="accordion" id="experienceAccordion">
 
-                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -373,7 +390,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -400,7 +417,7 @@
                             </div>
                         </div>
                         
-                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -426,7 +443,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -449,7 +466,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingFive">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -477,7 +494,7 @@
                             </div>
                         </div>
                         
-                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingSix">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -503,7 +520,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="accordion-header" id="headingSeven">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -527,12 +544,12 @@
                         </div>
 
                     </div>
-                    <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="education_title" data-aos="fade-up">Education</h2>
+                    <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="education_title" data-aos="fade-up" data-aos-delay="150">Education</h2>
                     <div class="accordion" id="educationAccordion">
 
-                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="200">
                             <h2 class="accordion-header" id="headingEduOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduOne" aria-expanded="false" aria-controls="collapseEduOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduOne" aria-expanded="true" aria-controls="collapseEduOne">
                                     <div class="d-sm-flex w-100 align-items-center">
                                         <img src="images/cemslogo.png" alt="CEMS Logo" class="company-logo me-3 mb-2 mb-sm-0">
                                         <div class="flex-grow-1">
@@ -543,7 +560,7 @@
                                     </div>
                                 </button>
                             </h2>
-                            <div id="collapseEduOne" class="accordion-collapse collapse" aria-labelledby="headingEduOne" data-bs-parent="#educationAccordion">
+                            <div id="collapseEduOne" class="accordion-collapse collapse show" aria-labelledby="headingEduOne" data-bs-parent="#educationAccordion">
                                 <div class="accordion-body">
                                     <p class="card-text small" data-translate-key="edu1_desc">Part of a global program consistently ranked in the Top 5 for Masters in Management.</p>
                                     <ul class="small text-body-secondary ps-4">
@@ -554,7 +571,7 @@
                             </div>
                         </div>
                         
-                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="200">
                             <h2 class="accordion-header" id="headingEduTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEduTwo" aria-expanded="false" aria-controls="collapseEduTwo">
                                     <div class="d-sm-flex w-100 align-items-center">
@@ -575,7 +592,7 @@
                         </div>
 
                     </div>
-                    <div data-aos="fade-up" data-aos-delay="50">
+                    <div data-aos="fade-up" data-aos-delay="250">
                         <h2 class="display-6 fw-bold mb-4 mt-5" data-translate-key="lang_title">Languages</h2>
                         <p id="language-switcher">
                             <a href="#" class="badge bg-primary fs-6 me-1 mb-2 lang-badge" data-lang="nl">🇳🇱 <span data-translate-key="lang_nl">Dutch: Native</span></a>
@@ -595,15 +612,15 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script src="translations.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- 4. INITIALIZE AOS ---
+            // --- INITIALIZE AOS ---
             AOS.init({
-                duration: 600, // Animation duration in ms
-                once: true,     // Whether animation should happen only once
-                easing: 'ease-out-quad' // Animation easing
+                duration: 600,          // Animation duration in ms
+                once: true,             // Whether animation should happen only once
+                easing: 'ease-out-quad',// Animation easing
+                offset: 50              // Trigger animation 50px before element hits screen
             });
 
             // --- THEME TOGGLER ---
@@ -625,59 +642,50 @@
             const languageSwitcher = document.getElementById('language-switcher');
             const savedLang = localStorage.getItem('lang') || 'en'; // Default to English
 
-            // Translate Function
             function translatePage(lang) {
-                // Set the 'lang' attribute on the <html> tag
                 docElement.setAttribute('lang', lang);
-
-                // Find all elements with the 'data-translate-key' attribute
                 document.querySelectorAll('[data-translate-key]').forEach(el => {
                     const key = el.getAttribute('data-translate-key');
-                    
-                    // Check if the key exists in the loaded translations object
                     if (translations[key]) {
                         const translation = translations[key][lang];
-                        
                         if (translation) {
-                            el.innerHTML = translation; // Use innerHTML to render flags/HTML entities
+                            el.innerHTML = translation;
                         } else {
-                            // Fallback to English if translation is missing for the selected lang
-                            const fallback = translations[key]['en'];
-                            if(fallback) {
-                                el.innerHTML = fallback;
-                            } else {
-                                console.warn(`No translation or English fallback found for key: ${key}`);
-                            }
+                            el.innerHTML = translations[key]['en'] || '';
                         }
                     } else {
                         console.warn(`No translation object found for key: ${key}`);
                     }
                 });
 
-                // Special case: Update page title
-                if (translations['title']?.[lang]) {
-                    document.title = translations['title'][lang];
-                } else {
-                    document.title = translations['title']['en'];
-                }
-
-                // Save language preference
+                document.title = translations['title']?.[lang] || translations['title']['en'];
                 localStorage.setItem('lang', lang);
             }
 
-            // Add Click Listeners
             languageSwitcher.addEventListener('click', (e) => {
                 const langBadge = e.target.closest('.lang-badge');
                 if (langBadge) {
                     e.preventDefault(); 
                     const lang = langBadge.getAttribute('data-lang');
                     translatePage(lang);
+                    
+                    // After a translation, accordions might change height
+                    // We need to refresh AOS to recalculate trigger points
+                    setTimeout(() => {
+                        AOS.refresh();
+                    }, 100); // Give a short delay for text to reflow
                 }
             });
 
-            // Initial Load
-            // Translate the page on load using the saved language
-            translatePage(savedLang); 
+            // --- INITIAL PAGE LOAD ---
+            translatePage(savedLang);
+            
+            // Refresh AOS after the initial translation to make sure
+            // all element positions are correct for the animations
+            setTimeout(() => {
+                AOS.refresh();
+            }, 100); 
+
         });
     </script>
 
